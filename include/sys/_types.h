@@ -15,6 +15,7 @@ __BEGIN_DECLS
 
 #include <sys/lock.h>
 #include <newlib.h>
+#include <sys/_pthreadtypes.h>
 
 /** \addtogroup system_types
     @{
@@ -159,10 +160,6 @@ typedef _TIMER_T_   __timer_t;
 
 typedef _CLOCK_T_   __clock_t;
 
-// This part inserted to fix newlib brokenness.
-/** \brief  Size of an fd_set. */
-#define FD_SETSIZE      1024
-
 /* The architecture should define the macro BYTE_ORDER in <arch/types.h> to
    equal one of these macros for code that looks for these BSD-style macros. */
 /** \brief  Little Endian test macro */
@@ -204,9 +201,6 @@ typedef _CLOCK_T_   __clock_t;
 
 /* This is for old KOS source compatibility. */
 #include <arch/types.h>
-
-/* Include stuff to make pthreads work as well. */
-#include <sys/_pthread.h>
 
 #if __GNUC_MINOR__ > 95 || __GNUC__ >= 3
 typedef __builtin_va_list   __va_list;

@@ -2,6 +2,12 @@
 
 Platform-specific changes are prefixed with the platform name, otherwise the change is platform-independent. The name/initials of the person who is responsible for the change are listed in [square brackets] for most versions (where they are missing from early versions, assume that they should be attributed to Megan Potter).
 
+## KallistiOS version 2.2.0
+- Added implementation of thread barriers [LS]
+- Removed old pthreads implementation from kernel/libc [LS]
+- Added new (more complete/compliant) pthreads implementation in addons/libpthread [LS]
+- Added support for pthread_condattr_setclock() [FG]
+
 ## KallistiOS version 2.1.0
 - Cleaned up generated stubs files on a make clean [Lawrence Sebald == LS]
 - **Dreamcast**: Added a function to detect if the program is being run on a retail Dreamcast or a Set5.xx device [LS]

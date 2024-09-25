@@ -13,6 +13,7 @@ all:
 	$(KOS_MAKE) -C tls
 	$(KOS_MAKE) -C spinlock_test
 	$(KOS_MAKE) -C atomics
+	$(KOS_MAKE) -C barrier
 	$(KOS_MAKE) -C reentrant_mutex
 
 clean:
@@ -24,6 +25,7 @@ clean:
 	$(KOS_MAKE) -C tls clean
 	$(KOS_MAKE) -C spinlock_test clean
 	$(KOS_MAKE) -C atomics clean
+	$(KOS_MAKE) -C barrier clean
 	$(KOS_MAKE) -C reentrant_mutex clean
 
 dist:
@@ -35,4 +37,5 @@ dist:
 	$(KOS_MAKE) -C tls dist
 	$(KOS_MAKE) -C spinlock_test dist
 	$(KOS_MAKE) -C atomics dist
+	$(KOS_MAKE) -C barrier dist
 	$(KOS_MAKE) -C reentrant_mutex dist

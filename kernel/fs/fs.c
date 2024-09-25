@@ -186,7 +186,7 @@ static int fs_hnd_unref(fs_hnd_t *ref) {
 
 /* Assigns a file descriptor (index) to a file handle (pointer). Will auto-
    reference the handle, and unrefs on error. */
-static int fs_hnd_assign(fs_hnd_t * hnd) {
+static int fs_hnd_assign(fs_hnd_t *hnd) {
     int i;
 
     fs_hnd_ref(hnd);
@@ -197,6 +197,10 @@ static int fs_hnd_assign(fs_hnd_t * hnd) {
             break;
 
     if(i >= FD_SETSIZE) {
+        dbglog(DBG_ERROR, "fs_hnd_assign: Update FD_SETSIZE definition in \
+              opts.h to support additional files being opened. Current \
+              limit is %d\n", FD_SETSIZE);
+
         fs_hnd_unref(hnd);
         errno = EMFILE;
         return -1;
