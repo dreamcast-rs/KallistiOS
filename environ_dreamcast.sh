@@ -13,10 +13,13 @@ fi
 
 # Default the SH4 floating point precision if it isn't already set.
 if [ -z "${KOS_SH4_PRECISION}" ] ; then
-    export KOS_SH4_PRECISION="-m4-single-only"
+    export KOS_SH4_PRECISION="-m4-single"
 fi
 
 export KOS_CFLAGS="${KOS_CFLAGS} ${KOS_SH4_PRECISION} -ml -ffunction-sections -fdata-sections -matomic-model=soft-imask -ftls-model=local-exec"
+export KOS_RCG_RUSTFLAGS="${KOS_RCG_RUSTFLAGS} -Cllvm-args=${KOS_SH4_PRECISION} -Cllvm-args=-ml"
+export KOS_RCG_RUSTFLAGS="${KOS_RCG_RUSTFLAGS} -Cllvm-args=-ffunction-sections -Cllvm-args=-fdata-sections"
+export KOS_RCG_RUSTFLAGS="${KOS_RCG_RUSTFLAGS} -Cllvm-args=-matomic-model=soft-imask -Cllvm-args=-ftls-model=local-exec"
 export KOS_AFLAGS="${KOS_AFLAGS} -little"
 
 if [ x${KOS_SUBARCH} = xnaomi ]; then
