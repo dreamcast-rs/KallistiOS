@@ -32,6 +32,7 @@ utils/scramble/scramble
 utils/makeip/makeip
 utils/naomibintool/naomibintool
 utils/naominetboot/naominetboot
+utils/build_wrappers/sh-linker-wrapper
 examples/dreamcast/basic/exec/romdisk/sub.bin
 examples/dreamcast/kgl/basic/vq/fruit.vq
 examples/dreamcast/kgl/nehe/nehe26/data/txt2bin
