@@ -27,6 +27,8 @@ case "$1" in
         ;;
     * )
         CG_RUSTFLAGS="${KOS_RCG_RUSTFLAGS}" CHANNEL="release" \
-            ${KOS_RCG_CARGO} cargo $@
+            ${KOS_RCG_CARGO} cargo $@ \
+             --config "target.sh-elf.linker=\"sh-linker-wrapper\"" \
+             --target ${KOS_RUST_BASE}/misc/sh-elf.json
         ;;
 esac
