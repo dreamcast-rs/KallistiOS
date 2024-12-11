@@ -25,9 +25,6 @@ ifndef KOS_DEPDIR
 %.o: %.mm
 	kos-c++ $(CFLAGS) $(CXXFLAGS) -c $< -o $@
 
-%.o: %.rs
-	kos-rustc $(RFLAGS) $< -o $@
-
 else
 
 %.o: %.c
@@ -44,10 +41,6 @@ else
 
 %.o: %.mm
 	kos-c++ $(CFLAGS) $(CXXFLAGS) -c $< -o $@ -MD -MF $(KOS_DEPDIR)/$(patsubst %.mm,%.md,$(subst /,__,$(subst ..,,$<)))
-
-%.o: %.rs
-	kos-rustc $(RFLAGS) --emit dep-info,obj -o $@ $< --dep-info=$(KOS_DEPDIR)/$(patsubst %.rs,%.md,$
-(subst /,__,$(subst ..,,$<)))
 
 -include $(wildcard $(KOS_DEPDIR)/*.md)
 

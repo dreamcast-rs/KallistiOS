@@ -14,5 +14,5 @@ rustc +$(cat ${KOS_RCG_BASE}/rust-toolchain | grep 'channel' | cut -d '=' -f 2 |
     -Zcodegen-backend=${KOS_RCG_BASE}/target/release/librustc_codegen_gcc.so \
     --sysroot ${KOS_RCG_BASE}/build/build_sysroot/sysroot \
     --target ${KOS_RUST_BASE}/misc/sh-elf.json \
-    --emit=obj --crate-type=lib -O \
+    -Clinker=sh-linker-wrapper \
     "$@"
